@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form_using_js</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: burlywood;
+        }
+        form{
+            text-align: center;
+            max-width: 400px;
+            margin: 20px auto;
+        }
+        h1{
+            text-align: center;
+        }
+        form input, form select {
+            border-radius: 5px;
+            border: 2px solid black;
+            padding: 8px;
+            margin-bottom: 10px;
+            width: 300px;
+        }
+        form p, form label {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+    </style>
+    <script>
+        function validateform() {
+            var name = document.myform.name.value;
+            var password = document.myform.password.value;
+
+            if (name == null || name == "") {
+                alert("Name can't be blank");
+                return false;
+            }else{
+                return true;
+            }
+
+            var confirmPassword = document.myform.confirmpassword.value;
+            if (password == confirmPassword) {
+                return true;
+            }else{
+                alert("Password must be same");
+                return false;
+            }
+            
+            if (password.length <6) {
+                alert("Password must be more than 6 characters long.");
+                return false;
+            }else {
+                return true;
+            }
+            var userId = document.myform.userid.value;
+            if (userId.length == 0 || (userId.length < 5 || userId.length > 12)) {
+                alert("User ID is required and must be of length 5 to 12.");
+                return false;
+            }else{
+                return true;
+            }
+
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Invalid email address");
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1><b>Registration Form </b></h1>
+    <hr>
+    <form name="myform" method="post" onsubmit="return validateform()">
+        <b><p>User Id:</p></b>
+        <input type="text" name="userid"><br>
+        <b><p>Name:</p></b>
+        <input type="text" name="name"><br>
+        <b><p>Password:</p></b>
+        <input type="password" name="password"><br>
+        <b><p>Confirm Password:</p></b>
+        <input type="password" name="confirmpassword"><br>
+
+        <label for="gender"><b><p>Gender:</p></b></label>
+        <label for="male">Male</label>
+        <input type="radio" name="gender" id="male" value="male">
+        <label for="female">Female</label>
+        <input type="radio" name="gender" id="female" value="female"><br>
+
+        <label for="email"><p>Email:</p></label>
+        <input type="email" name="email" required><br>
+
+        <label for="country"><b><p>Country</b></p></label>
+        <select name="country" id="country" required>
+            <option value="">Select a country</option>
+            <option value="india">India</option>
+            <option value="usa">United States</option>
+            <option value="russia">Russia</option>
+            <option value="canada">Canada</option>
+            <option value="bangladesh">Bangladesh</option>
+            <option value="srilanka">Sri Lanka</option>
+            <option value="nepal">Nepal</option>
+            <option value="bhopal">Bhopal</option>
+            <option value="pakistan">Pakistan</option>
+            <option value="afganistan">Afganistan</option>
+            <option value="china">China</option>
+        </select><br>
+
+        <b><p>Address:</b></p>
+        <input type="address" name="address" required><br><br>
+
+
+        <input type="submit" value="Register">
+    </form>
+    <hr>
+    
+</body>
+</html>
+
+
+
+
